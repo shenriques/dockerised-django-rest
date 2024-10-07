@@ -23,15 +23,15 @@ stop-server:
 
 .PHONY: migrate
 migrate:
-	docker-compose exec app python manage.py migrate
+	docker compose exec app python manage.py migrate
 
 .PHONY: migrations
 migrations:
-	docker-compose exec app python manage.py make migrations
+	docker compose exec app python manage.py makemigrations
 
 .PHONY: superuser
 superuser:
-	docker-compose exec app python manage.py createsuperuser
+	docker compose exec app python manage.py createsuperuser
 
 .PHONY: logs
 logs:
