@@ -40,3 +40,11 @@ logs:
 .PHONY: rebuild
 rebuild:
 	docker compose down && docker compose up --build -d
+
+.PHONY: app
+app:
+	@if [ -z "$(app)" ]; then \
+		echo "provide an app name e.g., make app app=api"; \
+	else \
+		docker-compose exec app python manage.py startapp $(app); \
+	fi
