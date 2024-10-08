@@ -4,3 +4,4 @@ djangorestframework
 djangorestframework-simplejwt
 django-cors-headers
 python-decouple
+pillow==10.4.0
