@@ -11,7 +11,7 @@ class Topic(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    image = models.ImageField(upload_to='project_images/%Y/%m/%d/') # store images based on date created
+    image = models.ImageField(upload_to='project_images/%Y/%m/%d/', blank=True, null=True) # store images based on date created
     slug = models.SlugField(unique=True, blank=True)
 
     topics = models.ManyToManyField(Topic, related_name='projects', blank=True) # reverse look up
