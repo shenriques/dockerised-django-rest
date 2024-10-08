@@ -15,8 +15,20 @@ class ProjectListCreateAPIView(generics.ListCreateAPIView):
         if description is None:
             description = title
 
-        serializer.save(user=self.request.user, description=description)
+        serializer.save(description=description)
 
 class ProjectDetailAPIView(generics.RetrieveAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+
+class ProjectUpdateAPIView(generics.UpdateAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    lookup_field = 'pk'
+
+class ProjectDestroyAPIView(generics.DestroyAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+
+    def perform_destroy(self, instance):
+        return super().perform_destroy(instance)
