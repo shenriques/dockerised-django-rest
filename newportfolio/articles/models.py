@@ -1,11 +1,13 @@
 from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
+from topics.models import Topic
 
 class Article(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     slug = models.SlugField(unique=True, blank=True)
+    topics = models.ManyToManyField(Topic, related_name='articles', blank=True) # reverse look up
 
     updated = models.DateTimeField(auto_now=True) # get timestamp for whenever this is updated
     created = models.DateTimeField(auto_now_add=True) # get timestamp when instance was first created
