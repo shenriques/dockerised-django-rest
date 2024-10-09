@@ -20,6 +20,7 @@ class ProjectListCreateAPIView(generics.ListCreateAPIView):
 class ProjectDetailAPIView(generics.RetrieveAPIView):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+    lookup_field = 'pk'
 
 class ProjectUpdateAPIView(generics.UpdateAPIView):
     queryset = Project.objects.all()
